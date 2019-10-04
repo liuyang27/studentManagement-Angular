@@ -1,0 +1,102 @@
+<div class="content-wrapper">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <h4 class="page-head-line">Add New Student</h4>
+            </div>
+        </div>
+        
+        <form (ngSubmit)="onSubmit()" #studentForm="ngForm">
+            <div class="row col-md-12">
+                <div class="form-group col-md-1">
+                    <label for="uname">ID</label>
+                </div>
+                <div class="form-group col-md-5">
+                    <p><input type="text" class="form-control" name="sid"  placeholder="Enter student ID" ngModel (blur)="checkId()" ></p>
+                    <div class="alert alert-danger" role="alert" id="alertId" *ngIf="sidBool">
+                        ID exists...
+                    </div>
+                </div> 
+
+            </div>
+       
+        
+            <div class="row col-md-12">
+                <div class="form-group col-md-1">
+                    <label for="uname">Name</label>
+                </div>
+                <div class="form-group col-md-5">
+                    <input type="text" class="form-control" name="name"  placeholder="Enter name" ngModel/>
+                </div>   
+            </div>
+            <div class="row col-md-12">
+                <div class="form-group col-md-1">
+                    <label for="uname">Age</label>
+                </div>
+                <div class="form-group col-md-5">
+                    <input type="number" class="form-control" name="age"  placeholder="Enter age" ngModel/>
+                </div>   
+            </div>
+            <div class="row col-md-12">
+                <div class="form-group col-md-1">
+                    <label for="uname">Gender</label>
+                </div>
+                <div class="form-group col-md-5" >
+                    <input class="form-check-input" type="radio" name="gender" value="male" checked ngModel>Male
+                    <input class="form-check-input" type="radio" name="gender" value="female" ngModel>Female
+                </div>
+            </div>
+            <div class="row col-md-12">
+                <div class="form-group col-md-1">
+                    
+                </div>
+                <div class="form-group col-md-5">
+                    <button type="submit" class="btn btn-primary" id="btn">Submit</button>
+                </div>
+            </div>
+        
+        </form>
+    </div>
+</div>
+
+<!-- <script type="text/javascript" src="/js/jquery.js"></script>
+<script type="text/javascript">
+    $("#btn").click(function(){
+        $.post("/student",{
+            sid:parseInt($("input[name=sid]").val()),
+            name:$("input[name=name]").val(),
+            gender:$("input[name=gender]:checked").val(),
+            age:parseInt($("input[name=age]").val()),
+        },function(data){
+            if(data.results==1){
+                alert("OK");
+                $("input[type=text]").val("");
+                $("input[type=number]").val("");
+            }else if (data.results==-1){
+                alert("ID exists..");
+            }else if (data.results==-2){
+                alert("insert wrong..");
+            }
+        })
+    })
+
+    $("input[name=sid]").blur(function(){
+        var sid=parseInt($("input[name=sid]").val());
+        if(isNaN(sid) || !sid){
+            return;
+        }
+        $.ajax({
+            type:"propfind",
+            url:"/student/"+$("input[name=sid]").val(),
+            success:function(data){
+                if(!data.results){
+                    $("#alertId").show();
+                    $("#btn").attr("disabled","true");
+                }else{
+                    $("#alertId").hide();
+                    $("#btn").removeAttr("disabled");
+                }
+            }
+        });
+    })
+</script> -->

@@ -1,0 +1,83 @@
+
+<div class="content-wrapper">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <h4 class="page-head-line">All Students</h4>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-12">
+                <div class="table-responsive">
+                    <table class="table table-striped table-bordered table-hover">
+                        <thead>
+                            <tr>
+                                <th>ID</th>
+                                <th>Name</th>
+                                <th>Age</th>
+                                <th>Gender</th>
+                                <th></th>
+                            </tr>
+
+                            <tr *ngFor="let item of slist.results">
+                                <td>{{item.sid}}</td>
+                                <td>{{item.name}}</td>
+                                <td>{{item.age}}</td>
+                                <td>{{item.gender}}</td>
+                                <td><input type='button' class='btn btn-primary delbtn' data-sid=n.sid value='Delete' (click)="onDelete(item)"/> 
+                                    <input type='button' data-sid=n.sid class='btn btn-danger editbtn' value='Edit' (click)="onEdit(item)"/>
+                                </td>
+                            </tr>
+ 
+
+                        </thead>
+                        <tbody id='tbody'>
+
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script type="text/javascript" src="/assets/js/jquery.js"></script>
+<script type="text/javascript">
+
+    // $(".delbtn").click(function(){
+    //     alert('aaaaaa');
+    // });
+
+    // $("#tbody").delegate(".delbtn","click",function(){
+    //     if(!confirm("delete??")){
+    //         return;
+    //     }
+
+    //     var sid=$(this).attr("data-sid");
+    //     $this=$(this);
+
+    //     $.ajax({
+    //         url : "http://localhost:3000/student/"+sid,
+    //         type: "delete",
+    //         success:function(data){
+    //             if(data.results==-1){
+    //                 alert("delete err..");
+    //             }else{
+    //                 alert("deleted ok..");
+    //                 $this.parents("tr").remove();
+    //             }
+    //         }
+    //     })
+        
+    // });
+
+
+
+    // $("#tbody").delegate(".editbtn","click",function(){
+    //     var sid=$(this).attr("data-sid");
+    //     window.location="http://localhost:3000/student/"+sid;
+    // });
+
+
+</script>
